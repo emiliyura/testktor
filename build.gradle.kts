@@ -28,4 +28,10 @@ dependencies {
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
     implementation(kotlin("test"))
+
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
+    implementation("org.postgresql:postgresql:42.7.3")
+    implementation("com.h2database:h2:2.2.224")
+
 }
