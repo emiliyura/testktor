@@ -53,7 +53,7 @@ fun Application.configureDatabase() {
         url = "jdbc:postgresql://localhost:5432/testktorsql",
         driver = "org.postgresql.Driver",
         user = "postgres",
-        password = "1234" // Исправлен пароль
+        password = "1234"
     )
     println("Connected successfully!")
 
@@ -61,7 +61,7 @@ fun Application.configureDatabase() {
         println("Creating tables...")
         SchemaUtils.create(Users, Tokens)
         println("Tables created: ${Users.tableName}, ${Tokens.tableName}")
-    }
+    } // тут все есть
 
 
 }

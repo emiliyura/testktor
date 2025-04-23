@@ -17,13 +17,11 @@ class RegisterController(private val call: ApplicationCall) {
             call.respond(HttpStatusCode.BadRequest, "Email is not valid")
             return
         }
-
         val existingUser = Users.fetchUser(receive.login)
         if (existingUser != null) {
             call.respond(HttpStatusCode.Conflict, "User already exists")
             return
         }
-
         try {
             Users.insert(
                 UserDTO(
@@ -33,7 +31,6 @@ class RegisterController(private val call: ApplicationCall) {
                     username = receive.login // Используем login как username для примера
                 )
             )
-
             val token = UUID.randomUUID().toString()
             Tokens.insert(
                 TokenDTO(
@@ -42,7 +39,6 @@ class RegisterController(private val call: ApplicationCall) {
                     token = token
                 )
             )
-
             call.respond(RegisterResponseRemote(token = token))
         } catch (e: Exception) {
             call.respond(HttpStatusCode.InternalServerError, "Registration failed: ${e.message}")
